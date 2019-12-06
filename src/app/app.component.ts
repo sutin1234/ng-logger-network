@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ng-logger-network';
+  constructor(private http: HttpClient) {
+    http.get('https://jsonplaceholder.typicode.com/todos').subscribe(resp => {
+      console.log(resp);
+    });
+  }
 }
